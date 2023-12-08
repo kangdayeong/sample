@@ -1,0 +1,85 @@
+body {
+    background-color: bisque;
+  }
+  
+  .calc {
+    width: 215px;
+    margin: 100px auto 0px auto;
+    background-color: #fff;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 0 1px #000 inset;
+    margin-bottom: 20px;
+    height: 40px;
+    padding-right: 5px;
+  }
+  #preValue {
+    align-self: flex-start;
+    margin: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    min-width: 60px;
+    height: 25px;
+  }
+  #result {
+    flex: 1;
+    text-align: right;
+    /* margin: 0px 20px; */
+    /* padding-right: 15px; */
+    border: 0px;
+    height: 30px;
+    align-self: flex-end;
+    /* border: 0px; */
+  }
+  input:disabled {
+    background-color: inherit;
+  }
+  
+  #buttons {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-gap: 5px;
+    /* width: 100%; */
+    /* flex-direction: column; */
+  }
+  /* .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+  } */
+  
+  button {
+    /* flex: 1; */
+    height: 40px;
+    padding: 0px;
+    border: 0px;
+    box-shadow: 0 0 0 1px #000 inset;
+    cursor: pointer;
+    /* margin-right: 5px; */
+  }
+  button:hover {
+    background-color: #92d4b6;
+    transition: 0.2s ease-in-out;
+  }
+  #AC {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    /* padding-right: 10px; */
+  }
+  /* #per {
+    flex: 1;
+  } */
+  #n0 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    /* padding-right: 5px; */
+  }
+  
