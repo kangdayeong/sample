@@ -4,12 +4,62 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>api과제</title>
+  <title>API 과제</title>
 </head>
 <body>
-  <div id="app">
-    <!-- 과제는 여기서 부터 -->
-  </div>
+  <div id="app"></div>
+    
+  <!-- 과제는 여기서 부터 -->
+  <h2>POST Test</h2>
+  <form id="postForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="score">Score:</label>
+      <input type="number" id="score" name="score" required><br><br>
+      <input type="submit" value="Submit">
+  </form>
+  
+  <h2>GET Test</h2>
+  <button id="getRequest">Get Record</button>
+  
+  <!-- 결과를 보여줄 단일 태그 -->
+  <p id="result"></p>
+
+  <script>
+      // POST 요청 처리
+      document.getElementById("postForm").addEventListener("submit", function(event){ 
+          event.preventDefault();
+          var name = document.getElementById("name").value;
+          var score = parseInt(document.getElementById("score").value);
+
+          fetch('http://113.198.233.57:3000/api/test/record', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({name: name, score: score}),
+          })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById("result").innerHTML += 'POST Response: ' + JSON.stringify(data) + '<br>';
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+      });
+
+      // GET 요청 처리
+      document.getElementById("getRequest").addEventListener("click", function(){
+          fetch('http://113.198.233.57:3000/api/test/record?type=score')
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById("result").innerHTML += 'GET Response: ' + JSON.stringify(data) + '<br>';
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+      });
+  </script>
   <script src="api.js"></script>
 </body>
 </html>
