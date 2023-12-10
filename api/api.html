@@ -25,41 +25,7 @@
   <!-- 결과를 보여줄 단일 태그 -->
   <p id="result"></p>
 
-  <script>
-      // POST 요청 처리
-      document.getElementById("postForm").addEventListener("submit", function(event){ 
-          event.preventDefault();
-          var name = document.getElementById("name").value;
-          var score = parseInt(document.getElementById("score").value);
 
-          fetch('http://113.198.233.57:3000/api/test/record', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({name: name, score: score}),
-          })
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById("result").innerHTML += 'POST Response: ' + JSON.stringify(data) + '<br>';
-          })
-          .catch((error) => {
-              console.error('Error:', error);
-          });
-      });
-
-      // GET 요청 처리
-      document.getElementById("getRequest").addEventListener("click", function(){
-          fetch('http://113.198.233.57:3000/api/test/record?type=score')
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById("result").innerHTML += 'GET Response: ' + JSON.stringify(data) + '<br>';
-          })
-          .catch((error) => {
-              console.error('Error:', error);
-          });
-      });
-  </script>
   <script src="api.js"></script>
 </body>
 </html>
