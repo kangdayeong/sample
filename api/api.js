@@ -47,3 +47,28 @@ function fun() {
 }
 // GET 요청 처리
 $getBtn.addEventListener("click", fun);
+
+
+
+function func(event) {
+    event.preventDefault();
+    var name = document.getElementById("name").value;
+    var score = parseInt(document.getElementById("score").value);
+
+    fetch('http://113.198.233.57:3000/api/test/record', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, score: score }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerHTML += 'POST Response: ' + JSON.stringify(data) + '<br>';
+        alert("POST 요청 성공!"); // 성공 알림 추가
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert("오류 발생: " + error); // 오류 알림 추가
+    });
+}
